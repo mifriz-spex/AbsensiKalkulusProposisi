@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Absensi Mahasiswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="login-card">
+            <h2>Absensi Mahasiswa</h2>
+            <p class="subtitle">Logika Proposisi dengan Bukti Valid</p>
+
+            <div class="input-group">
+                <label>Nama Lengkap:</label>
+                <input type="text" id="namaMahasiswa" placeholder="Nama mahasiswa..." autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label>Status Kehadiran:</label>
+                <select id="statusUtama" onchange="tampilkanFormLanjutan()">
+                    <option value="" disabled selected>-- Pilih Status --</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak">Tidak Hadir</option>
+                </select>
+            </div>
+
+            <div id="formHadir" class="hidden">
+                <div class="input-group">
+                    <label>Upload Bukti Kehadiran :</label>
+                    <input type="file" id="buktiHadir" accept="image/*">
+                </div>
+
+                <div class="input-group">
+                    <label>Apakah Datang Terlambat?</label>
+                    <select id="isTelat" onchange="cekKeterlambatan()">
+                        <option value="N">Tepat Waktu</option>
+                        <option value="Y">Terlambat</option>
+                    </select>
+                </div>
+
+                <div id="boxAlasan" class="hidden" style="border-left: 3px solid #f0ad4e; padding-left: 10px;">
+                    <div class="input-group">
+                        <label>Alasan Keterlambatan:</label>
+                        <textarea id="alasanTelat" rows="2" placeholder="Jelaskan alasan..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Upload Bukti Keterlambatan :</label>
+                        <input type="file" id="buktiTelat" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+            <div id="formTidakHadir" class="hidden">
+                <div class="input-group">
+                    <label>Apakah Memiliki Izin?</label>
+                    <select id="isIzin" onchange="cekIzin()">
+                        <option value="N">Tidak Ada (Alpha)</option>
+                        <option value="Y">Ada Izin / Sakit</option>
+                    </select>
+                </div>
+
+                <div id="boxBukti" class="input-group hidden">
+                    <label>Upload Surat Izin/Sakit:</label>
+                    <input type="file" id="buktiIzin" accept="image/*,application/pdf">
+                </div>
+            </div>
+
+            <button onclick="prosesAbsensi()">Validasi & Kirim Data</button>
+
+            <div id="resultBox" class="result-box hidden">
+                <div id="resultName" style="margin-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.1); padding-bottom:5px;"></div>
+                
+                <div id="statusTitle">Absensi: </div>
+                <b id="statusText" style="font-size: 1.2rem;">-</b>
+                
+                <div class="evidence-list" id="evidenceList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
