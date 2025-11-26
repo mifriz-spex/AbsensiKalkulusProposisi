@@ -49,13 +49,11 @@ function prosesAbsensi() {
     let cssClass = "";
     let buktiText = ""; // String untuk menampung daftar bukti
 
-    // --- LOGIKA UTAMA (PROPOSIONAL CALCULUS) ---
-
     // SKENARIO A: HADIR (p)
     if (statusUtama === 'Hadir') {
         
-        // Validasi: Wajib Upload Selfie (s)
-        // Logika: p -> s (Jika Hadir, Maka Wajib Ada Selfie)
+        // Validasi: Wajib Upload Selfie (r)
+        // Logika: p -> r (Jika Hadir, Maka Wajib Ada Bukti)
         if (fileHadir.files.length === 0) {
             alert("Wajib upload bukti kehadiran!");
             return;
@@ -71,8 +69,7 @@ function prosesAbsensi() {
         } 
         // Sub-Skenario A2: Terlambat (p ^ q)
         else {
-            // Validasi: Wajib Upload Bukti Telat (t)
-            // Logika: (p ^ q) -> (s ^ t)
+            // Validasi: Wajib Upload Bukti Telat
             if (fileTelat.files.length === 0) {
                 alert("⚠️ Karena terlambat, wajib upload bukti keterlambatan (misal: foto macet)!");
                 return;
