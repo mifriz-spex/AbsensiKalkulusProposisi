@@ -71,7 +71,7 @@ function prosesAbsensi() {
         else {
             // Validasi: Wajib Upload Bukti Telat
             if (fileTelat.files.length === 0) {
-                alert("⚠️ Karena terlambat, wajib upload bukti keterlambatan (misal: foto macet)!");
+                alert("Karena terlambat, wajib upload bukti keterlambatan!");
                 return;
             }
             
